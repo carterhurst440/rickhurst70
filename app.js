@@ -204,16 +204,19 @@
   // ---------- Confetti ----------
   const confetti = document.getElementById('confetti');
   if (confetti) {
-    const colors = ['#E8A33D', '#D96E5B', '#3B6E7A', '#6B8E6F', '#1A1F2E'];
-    for (let i = 0; i < 60; i++) {
+    const colors = ['#00F0FF', '#FF2EC4', '#C5FF45', '#B14EFF', '#FF7847', '#FFD93D'];
+    for (let i = 0; i < 70; i++) {
       const s = document.createElement('span');
+      const c = colors[Math.floor(Math.random() * colors.length)];
+      const size = 2 + Math.random() * 4;
       s.style.left = Math.random() * 100 + '%';
-      s.style.background = colors[Math.floor(Math.random() * colors.length)];
-      s.style.animationDuration = (4 + Math.random() * 5) + 's';
-      s.style.animationDelay = -Math.random() * 8 + 's';
-      s.style.transform = `rotate(${Math.random() * 360}deg)`;
-      s.style.width = (6 + Math.random() * 6) + 'px';
-      s.style.height = (10 + Math.random() * 8) + 'px';
+      s.style.background = c;
+      s.style.boxShadow = `0 0 6px ${c}, 0 0 14px ${c}`;
+      s.style.animationDuration = (5 + Math.random() * 6) + 's';
+      s.style.animationDelay = -Math.random() * 10 + 's';
+      s.style.width = size + 'px';
+      s.style.height = size + 'px';
+      s.style.opacity = (0.5 + Math.random() * 0.5).toString();
       confetti.appendChild(s);
     }
   }

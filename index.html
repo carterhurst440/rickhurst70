@@ -6,25 +6,37 @@
 <title>Rick Hurst — 70th Birthday Memory Journal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
 <style>
   :root {
-    --bg: #FAF7F2;
-    --bg-warm: #F2EDE2;
-    --ink: #1A1F2E;
-    --ink-soft: #4A5061;
-    --ink-faint: #8A8F9D;
-    --sun: #E8A33D;
-    --sage: #6B8E6F;
-    --coral: #D96E5B;     /* Scott */
-    --teal: #3B6E7A;       /* Carter */
-    --paper: #FFFEFB;
-    --line: rgba(26,31,46,0.12);
+    --bg: #05060d;
+    --bg-elev: #0d1020;
+    --bg-tile: #0a0d18;
+    --ink: #E8EBF5;
+    --ink-soft: #8B92A8;
+    --ink-faint: #4D5469;
+    --line: rgba(255,255,255,0.08);
+    --line-bright: rgba(255,255,255,0.18);
+
+    --cyan:    #00F0FF;
+    --magenta: #FF2EC4;
+    --lime:    #C5FF45;
+    --purple:  #B14EFF;
+    --orange:  #FF7847;
+    --yellow:  #FFD93D;
+
+    --scott:  var(--magenta);
+    --carter: var(--cyan);
   }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { height: 100%; }
   body {
-    background: var(--bg);
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%,    rgba(177,78,255,0.10) 0%, transparent 70%),
+      radial-gradient(ellipse 70% 60% at 100% 100%, rgba(0,240,255,0.07)  0%, transparent 60%),
+      radial-gradient(ellipse 70% 60% at 0% 100%,   rgba(255,46,196,0.06) 0%, transparent 60%),
+      var(--bg);
     color: var(--ink);
     font-family: "Inter", system-ui, sans-serif;
     font-size: 16px;
@@ -33,10 +45,22 @@
     -webkit-font-smoothing: antialiased;
   }
   .display { font-family: "Instrument Serif", serif; font-weight: 400; letter-spacing: -0.01em; }
-  .script { font-family: "Caveat", cursive; }
+  .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+
+  /* subtle starfield grid */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 56px 56px;
+    pointer-events: none;
+    z-index: 0;
+  }
 
   /* ---------- VIEW SWITCHER ---------- */
-  .view { display: none; min-height: 100vh; position: relative; }
+  .view { display: none; min-height: 100vh; position: relative; z-index: 1; }
   .view.active { display: block; animation: fadeIn 0.7s ease; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 
@@ -55,40 +79,69 @@
   .eyebrow {
     text-transform: uppercase;
     letter-spacing: 0.32em;
-    font-size: 12px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
     color: var(--ink-soft);
     font-weight: 500;
-    margin-bottom: 28px;
+    margin-bottom: 32px;
+  }
+  .eyebrow .pulse {
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--cyan);
+    border-radius: 50%;
+    margin-right: 10px;
+    box-shadow: 0 0 6px var(--cyan), 0 0 14px var(--cyan);
+    animation: dotPulse 2s ease-in-out infinite;
+  }
+  @keyframes dotPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
   }
   .seventy {
     font-family: "Instrument Serif", serif;
     font-size: clamp(180px, 32vw, 380px);
     line-height: 0.85;
-    color: var(--ink);
     position: relative;
     display: inline-block;
   }
   .seventy .seven, .seventy .zero { display: inline-block; }
+  .seventy .seven {
+    color: var(--magenta);
+    text-shadow:
+      0 0 12px rgba(255,46,196,0.9),
+      0 0 30px rgba(255,46,196,0.6),
+      0 0 60px rgba(255,46,196,0.4);
+  }
   .seventy .zero {
-    color: var(--sun);
+    color: var(--cyan);
     font-style: italic;
     transform: translateY(2%);
+    text-shadow:
+      0 0 12px rgba(0,240,255,0.9),
+      0 0 30px rgba(0,240,255,0.6),
+      0 0 60px rgba(0,240,255,0.4);
   }
   .welcome-name {
     font-family: "Instrument Serif", serif;
     font-size: clamp(40px, 6vw, 72px);
-    margin-top: 12px;
+    margin-top: 18px;
     line-height: 1;
+    color: var(--ink);
   }
-  .welcome-name em { color: var(--coral); font-style: italic; }
+  .welcome-name em {
+    color: var(--yellow);
+    font-style: italic;
+    text-shadow: 0 0 14px rgba(255,217,61,0.6), 0 0 36px rgba(255,217,61,0.3);
+  }
   .welcome-sub {
-    margin-top: 24px;
+    margin-top: 28px;
     color: var(--ink-soft);
-    font-size: 17px;
-    max-width: 520px;
+    font-size: 16px;
+    max-width: 560px;
     margin-left: auto;
     margin-right: auto;
-    line-height: 1.6;
+    line-height: 1.7;
   }
   .welcome-cta {
     margin-top: 56px;
@@ -98,44 +151,61 @@
     flex-wrap: wrap;
   }
   .son-btn {
-    background: var(--paper);
+    background: var(--bg-elev);
     border: 1px solid var(--line);
-    border-radius: 18px;
+    border-radius: 14px;
     padding: 22px 40px 22px 24px;
     display: inline-flex;
     align-items: center;
     gap: 18px;
     cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, background 0.25s ease;
     text-align: left;
     font-family: inherit;
     color: inherit;
     min-width: 240px;
+    position: relative;
   }
-  .son-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 40px -16px rgba(26,31,46,0.25); }
+  .son-btn:hover { transform: translateY(-3px); }
   .son-btn .avatar {
-    width: 56px; height: 56px; border-radius: 50%;
+    width: 52px; height: 52px; border-radius: 50%;
     display: grid; place-items: center;
     font-family: "Instrument Serif", serif;
-    font-size: 28px;
-    color: var(--paper);
+    font-size: 26px;
+    color: var(--bg);
     flex-shrink: 0;
+    border: 1px solid transparent;
+    transition: box-shadow 0.25s;
   }
-  .son-btn[data-son="scott"]:hover { border-color: var(--coral); }
-  .son-btn[data-son="scott"] .avatar { background: var(--coral); }
-  .son-btn[data-son="carter"]:hover { border-color: var(--teal); }
-  .son-btn[data-son="carter"] .avatar { background: var(--teal); }
+  .son-btn[data-son="scott"]:hover {
+    border-color: var(--scott);
+    box-shadow: 0 0 0 1px var(--scott), 0 0 24px rgba(255,46,196,0.35);
+  }
+  .son-btn[data-son="scott"] .avatar {
+    background: var(--scott);
+    box-shadow: 0 0 14px rgba(255,46,196,0.6);
+  }
+  .son-btn[data-son="carter"]:hover {
+    border-color: var(--carter);
+    box-shadow: 0 0 0 1px var(--carter), 0 0 24px rgba(0,240,255,0.35);
+  }
+  .son-btn[data-son="carter"] .avatar {
+    background: var(--carter);
+    box-shadow: 0 0 14px rgba(0,240,255,0.6);
+  }
   .son-btn .label-small {
-    font-size: 11px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px;
     text-transform: uppercase;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.2em;
     color: var(--ink-faint);
   }
   .son-btn .label-name {
     font-family: "Instrument Serif", serif;
     font-size: 28px;
     line-height: 1.1;
-    margin-top: 2px;
+    margin-top: 4px;
+    color: var(--ink);
   }
   .son-btn .arrow {
     margin-left: 12px;
@@ -143,53 +213,74 @@
     color: var(--ink-faint);
     transition: transform 0.25s ease, color 0.25s ease;
   }
-  .son-btn:hover .arrow { transform: translateX(4px); color: var(--ink); }
+  .son-btn[data-son="scott"]:hover  .arrow { color: var(--scott);  transform: translateX(4px); }
+  .son-btn[data-son="carter"]:hover .arrow { color: var(--carter); transform: translateX(4px); }
 
-  /* Confetti layer */
+  /* Confetti — neon particles */
   .confetti {
     position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 1;
   }
   .confetti span {
     position: absolute;
-    width: 10px; height: 14px;
+    width: 4px; height: 4px;
     top: -20px;
-    opacity: 0.85;
-    border-radius: 1px;
+    border-radius: 50%;
     animation: confettiFall linear infinite;
   }
   @keyframes confettiFall {
-    0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
-    10% { opacity: 0.9; }
-    100% { transform: translateY(110vh) rotate(720deg); opacity: 0.6; }
+    0%   { transform: translateY(-10vh) translateX(0); opacity: 0; }
+    8%   { opacity: 1; }
+    100% { transform: translateY(110vh) translateX(20px); opacity: 0; }
   }
 
   /* ---------- JOURNAL VIEW ---------- */
   .journal-header {
     position: sticky; top: 0; z-index: 50;
-    backdrop-filter: blur(12px);
-    background: rgba(250,247,242,0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    background: rgba(5,6,13,0.7);
     border-bottom: 1px solid var(--line);
     padding: 14px 28px;
     display: flex; align-items: center; justify-content: space-between;
     gap: 16px;
   }
   .back-btn {
-    background: none; border: none; cursor: pointer;
-    color: var(--ink-soft); font-family: inherit; font-size: 14px;
+    background: none; border: 1px solid var(--line); cursor: pointer;
+    color: var(--ink-soft);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
     display: inline-flex; align-items: center; gap: 8px;
-    padding: 8px 12px; border-radius: 10px;
-    transition: background 0.2s;
+    padding: 8px 14px; border-radius: 8px;
+    transition: all 0.2s;
   }
-  .back-btn:hover { background: rgba(26,31,46,0.05); color: var(--ink); }
+  .back-btn:hover {
+    background: rgba(255,255,255,0.04);
+    color: var(--ink);
+    border-color: var(--line-bright);
+  }
   .journal-title {
     font-family: "Instrument Serif", serif;
     font-size: 22px;
-    display: flex; align-items: baseline; gap: 10px;
+    display: flex; align-items: baseline; gap: 12px;
   }
-  .journal-title .from { color: var(--ink-faint); font-size: 13px; font-family: "Inter", sans-serif; text-transform: uppercase; letter-spacing: 0.18em; }
+  .journal-title .from {
+    color: var(--ink-faint);
+    font-size: 11px;
+    font-family: "JetBrains Mono", monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+  }
   .journal-title .name { font-style: italic; }
-  #scott-view .journal-title .name { color: var(--coral); }
-  #carter-view .journal-title .name { color: var(--teal); }
+  #scott-view  .journal-title .name {
+    color: var(--scott);
+    text-shadow: 0 0 12px rgba(255,46,196,0.6);
+  }
+  #carter-view .journal-title .name {
+    color: var(--carter);
+    text-shadow: 0 0 12px rgba(0,240,255,0.6);
+  }
 
   /* The map canvas */
   .map-wrap {
@@ -223,12 +314,24 @@
     font-family: "Instrument Serif", serif;
     font-size: clamp(32px, 4.5vw, 54px);
     line-height: 1.05;
+    color: var(--ink);
   }
   .map-intro h2 em { font-style: italic; }
-  #scott-view .map-intro h2 em { color: var(--coral); }
-  #carter-view .map-intro h2 em { color: var(--teal); }
+  #scott-view  .map-intro h2 em {
+    color: var(--scott);
+    text-shadow: 0 0 14px rgba(255,46,196,0.55);
+  }
+  #carter-view .map-intro h2 em {
+    color: var(--carter);
+    text-shadow: 0 0 14px rgba(0,240,255,0.55);
+  }
   .map-intro p {
-    color: var(--ink-soft); margin-top: 10px; max-width: 520px; font-size: 15px;
+    color: var(--ink-soft);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    margin-top: 12px;
   }
 
   /* Tile (a memory) */
@@ -239,42 +342,55 @@
     transform: translate(-50%, -50%);
     z-index: 5;
     transition: transform 0.3s cubic-bezier(.2,.8,.2,1);
+    background: none; border: none; padding: 0;
+    color: inherit; font-family: inherit;
   }
   .tile:hover { transform: translate(-50%, -50%) translateY(-6px); z-index: 6; }
   .tile-art {
     width: 100%; aspect-ratio: 1;
-    background: var(--paper);
+    background: var(--bg-tile);
     border: 1px solid var(--line);
-    border-radius: 22px;
-    box-shadow: 0 14px 28px -18px rgba(26,31,46,0.35);
+    border-radius: 16px;
     display: grid; place-items: center;
     overflow: hidden;
-    transition: box-shadow 0.3s, border-color 0.3s;
+    transition: box-shadow 0.3s, border-color 0.3s, background 0.3s;
+    position: relative;
   }
-  .tile:hover .tile-art {
-    box-shadow: 0 22px 50px -18px rgba(26,31,46,0.4);
+  .tile-art::before {
+    content: "";
+    position: absolute; inset: 0;
+    border-radius: 16px;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.04) 0%, transparent 60%);
+    pointer-events: none;
   }
-  #scott-view .tile:hover .tile-art { border-color: var(--coral); }
-  #carter-view .tile:hover .tile-art { border-color: var(--teal); }
-  .tile-art svg { width: 84%; height: 84%; }
+  #scott-view  .tile:hover .tile-art {
+    border-color: var(--scott);
+    box-shadow: 0 0 0 1px var(--scott), 0 0 32px rgba(255,46,196,0.35);
+  }
+  #carter-view .tile:hover .tile-art {
+    border-color: var(--carter);
+    box-shadow: 0 0 0 1px var(--carter), 0 0 32px rgba(0,240,255,0.35);
+  }
+  .tile-art svg { width: 78%; height: 78%; }
   .tile-label {
-    margin-top: 12px;
+    margin-top: 14px;
     text-align: center;
-    font-size: 13px;
-    color: var(--ink-soft);
-    line-height: 1.25;
+    line-height: 1.3;
   }
   .tile-label .num {
     display: block;
-    font-family: "Instrument Serif", serif;
-    font-style: italic;
-    font-size: 14px;
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 500;
+    font-size: 10px;
     color: var(--ink-faint);
-    margin-bottom: 2px;
+    letter-spacing: 0.18em;
+    margin-bottom: 4px;
   }
   .tile-label .ttl {
-    font-weight: 500;
+    font-family: "Instrument Serif", serif;
+    font-size: 17px;
     color: var(--ink);
+    letter-spacing: -0.005em;
   }
 
   /* Tile entry stagger */
@@ -284,11 +400,20 @@
     to { opacity: 1; transform: translate(-50%, -50%); }
   }
 
+  /* ---------- NEON GLOW CLASSES (illustrations) ---------- */
+  .neon-cyan    { filter: drop-shadow(0 0 3px #00F0FF) drop-shadow(0 0 10px rgba(0,240,255,0.55)); }
+  .neon-magenta { filter: drop-shadow(0 0 3px #FF2EC4) drop-shadow(0 0 10px rgba(255,46,196,0.55)); }
+  .neon-orange  { filter: drop-shadow(0 0 3px #FF7847) drop-shadow(0 0 10px rgba(255,120,71,0.55)); }
+  .neon-lime    { filter: drop-shadow(0 0 3px #C5FF45) drop-shadow(0 0 10px rgba(197,255,69,0.55)); }
+  .neon-purple  { filter: drop-shadow(0 0 3px #B14EFF) drop-shadow(0 0 10px rgba(177,78,255,0.55)); }
+  .neon-yellow  { filter: drop-shadow(0 0 3px #FFD93D) drop-shadow(0 0 10px rgba(255,217,61,0.55)); }
+
   /* ---------- MODAL ---------- */
   .modal-backdrop {
     position: fixed; inset: 0;
-    background: rgba(26,31,46,0.55);
-    backdrop-filter: blur(6px);
+    background: rgba(5,6,13,0.78);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     display: none;
     place-items: center;
     z-index: 100;
@@ -297,100 +422,144 @@
   }
   .modal-backdrop.open { display: grid; }
   .modal {
-    background: var(--paper);
-    border-radius: 20px;
-    width: min(560px, 100%);
+    background: var(--bg-elev);
+    border: 1px solid var(--line-bright);
+    border-radius: 16px;
+    width: min(580px, 100%);
     max-height: 86vh;
     overflow: auto;
-    box-shadow: 0 30px 80px -20px rgba(0,0,0,0.4);
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.04),
+      0 30px 80px -20px rgba(0,0,0,0.6);
     animation: modalIn 0.35s cubic-bezier(.2,.8,.2,1);
     position: relative;
   }
+  body.son-scott  .modal { box-shadow: 0 0 0 1px var(--scott),  0 30px 80px -10px rgba(255,46,196,0.3); }
+  body.son-carter .modal { box-shadow: 0 0 0 1px var(--carter), 0 30px 80px -10px rgba(0,240,255,0.3); }
   @keyframes modalIn {
     from { opacity: 0; transform: translateY(16px) scale(0.96); }
-    to { opacity: 1; transform: none; }
+    to   { opacity: 1; transform: none; }
   }
   .modal-close {
     position: absolute; top: 14px; right: 14px;
-    background: var(--bg-warm); border: none;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--line);
     width: 36px; height: 36px; border-radius: 50%;
-    cursor: pointer; font-size: 18px; color: var(--ink-soft);
+    cursor: pointer; font-size: 18px;
+    color: var(--ink-soft);
     display: grid; place-items: center;
-    transition: background 0.2s;
+    transition: all 0.2s;
+    z-index: 2;
   }
-  .modal-close:hover { background: rgba(26,31,46,0.1); }
+  .modal-close:hover { background: rgba(255,255,255,0.08); color: var(--ink); }
   .modal-art {
     width: 100%;
     aspect-ratio: 16 / 7;
     display: grid; place-items: center;
-    background: var(--bg-warm);
+    background:
+      radial-gradient(ellipse at center, rgba(255,255,255,0.05) 0%, transparent 70%),
+      var(--bg-tile);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  body.son-scott  .modal-art {
+    background:
+      radial-gradient(ellipse at center, rgba(255,46,196,0.18) 0%, transparent 70%),
+      var(--bg-tile);
+  }
+  body.son-carter .modal-art {
+    background:
+      radial-gradient(ellipse at center, rgba(0,240,255,0.18) 0%, transparent 70%),
+      var(--bg-tile);
   }
   .modal-art svg { width: 38%; height: 76%; }
-  #scott-view ~ .modal-backdrop .modal-art,
-  body.son-scott .modal-art { background: linear-gradient(135deg, #FBE9E4 0%, #F4D2C9 100%); }
-  body.son-carter .modal-art { background: linear-gradient(135deg, #DCEAEE 0%, #BFD7DD 100%); }
-  .modal-body { padding: 28px 32px 36px; }
+  .modal-body { padding: 28px 32px 30px; }
   .modal-meta {
     display: flex; gap: 12px; align-items: center;
-    font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 10px; text-transform: uppercase; letter-spacing: 0.22em;
     color: var(--ink-faint);
-    margin-bottom: 8px;
+    margin-bottom: 12px;
   }
   .modal-meta .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--ink-faint); }
-  body.son-scott .modal-meta .from { color: var(--coral); }
-  body.son-carter .modal-meta .from { color: var(--teal); }
+  body.son-scott  .modal-meta .from { color: var(--scott);  text-shadow: 0 0 10px rgba(255,46,196,0.5); }
+  body.son-carter .modal-meta .from { color: var(--carter); text-shadow: 0 0 10px rgba(0,240,255,0.5); }
   .modal-title {
     font-family: "Instrument Serif", serif;
     font-size: 36px;
     line-height: 1.1;
     margin-bottom: 18px;
+    color: var(--ink);
   }
   .modal-text {
     color: var(--ink-soft);
-    font-size: 16px;
-    line-height: 1.7;
+    font-size: 15.5px;
+    line-height: 1.75;
     white-space: pre-wrap;
   }
   .modal-text .placeholder {
-    background: rgba(232,163,61,0.12);
-    color: var(--ink-soft);
+    background: rgba(177,78,255,0.12);
+    color: var(--ink);
     padding: 2px 6px;
     border-radius: 4px;
     font-style: italic;
+    border: 1px dashed rgba(177,78,255,0.4);
   }
   .modal-footer {
     margin-top: 26px;
     padding-top: 18px;
     border-top: 1px solid var(--line);
     display: flex; justify-content: space-between; align-items: center;
-    font-size: 13px; color: var(--ink-faint);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
   }
   .modal-nav { display: flex; gap: 8px; }
   .modal-nav button {
-    background: none; border: 1px solid var(--line);
-    border-radius: 10px; padding: 8px 14px;
-    font-family: inherit; font-size: 13px; color: var(--ink-soft);
-    cursor: pointer; transition: all 0.2s;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: all 0.2s;
   }
-  .modal-nav button:hover { background: var(--bg-warm); color: var(--ink); }
+  .modal-nav button:hover {
+    background: rgba(255,255,255,0.06);
+    color: var(--ink);
+    border-color: var(--line-bright);
+  }
 
   /* ---------- MUSIC TOGGLE ---------- */
   .music-toggle {
     position: fixed; bottom: 22px; right: 22px;
     z-index: 80;
-    background: var(--paper);
+    background: rgba(13,16,32,0.85);
+    backdrop-filter: blur(10px);
     border: 1px solid var(--line);
     border-radius: 999px;
     padding: 10px 16px 10px 12px;
     display: flex; align-items: center; gap: 10px;
     cursor: pointer;
-    font-family: inherit;
-    font-size: 13px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
     color: var(--ink-soft);
-    box-shadow: 0 10px 30px -14px rgba(26,31,46,0.3);
     transition: all 0.2s;
   }
-  .music-toggle:hover { color: var(--ink); transform: translateY(-2px); }
+  .music-toggle:hover {
+    color: var(--ink);
+    border-color: var(--line-bright);
+    transform: translateY(-2px);
+  }
   .music-toggle .bars {
     display: flex; align-items: end; gap: 2px; height: 14px;
   }
@@ -398,8 +567,14 @@
     width: 3px; background: var(--ink-faint); border-radius: 1px;
     height: 30%;
   }
+  .music-toggle.playing {
+    border-color: var(--cyan);
+    box-shadow: 0 0 18px rgba(0,240,255,0.3);
+    color: var(--cyan);
+  }
   .music-toggle.playing .bars span {
-    background: var(--sun);
+    background: var(--cyan);
+    box-shadow: 0 0 6px var(--cyan);
     animation: bar 1s ease-in-out infinite;
   }
   .music-toggle.playing .bars span:nth-child(2) { animation-delay: 0.15s; }
@@ -428,18 +603,12 @@
   .anim-football .ball { animation: arc 3s ease-in-out infinite; }
   @keyframes arc {
     0%, 100% { transform: translate(0, 0) rotate(0); }
-    50% { transform: translate(30px, -25px) rotate(180deg); }
+    50% { transform: translate(34px, -22px) rotate(180deg); }
   }
   .anim-drum .stick-l { animation: stickL 0.6s ease-in-out infinite; transform-origin: 22% 22%; }
   .anim-drum .stick-r { animation: stickR 0.6s ease-in-out infinite; transform-origin: 78% 22%; }
-  @keyframes stickL {
-    0%, 100% { transform: rotate(-10deg); }
-    50% { transform: rotate(20deg); }
-  }
-  @keyframes stickR {
-    0%, 100% { transform: rotate(10deg); }
-    50% { transform: rotate(-20deg); }
-  }
+  @keyframes stickL { 0%,100% { transform: rotate(-10deg); } 50% { transform: rotate(20deg); } }
+  @keyframes stickR { 0%,100% { transform: rotate(10deg); } 50% { transform: rotate(-20deg); } }
   .anim-dice .die { animation: rollDie 3.5s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
   .anim-dice .die-2 { animation-delay: -1.7s; }
   @keyframes rollDie {
@@ -447,32 +616,26 @@
     80% { transform: rotate(20deg) translateY(-4px); }
     90% { transform: rotate(-12deg); }
   }
-  .anim-mountain .sun { animation: sunPulse 4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+  .anim-mountain .sun { animation: sunPulse 3.2s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
   @keyframes sunPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-  }
-  .anim-mountain .bird { animation: birdFly 6s linear infinite; }
-  @keyframes birdFly {
-    0% { transform: translate(-10px, 0); opacity: 0; }
-    20%, 80% { opacity: 1; }
-    100% { transform: translate(40px, -8px); opacity: 0; }
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.15); opacity: 0.7; }
   }
   .anim-wrestle .figure-l { animation: wrestleL 1.6s ease-in-out infinite; transform-origin: 35% 65%; transform-box: fill-box; }
   .anim-wrestle .figure-r { animation: wrestleR 1.6s ease-in-out infinite; transform-origin: 65% 65%; transform-box: fill-box; }
-  @keyframes wrestleL { 0%,100%{transform:translateX(0) rotate(0);} 50%{transform:translateX(2px) rotate(2deg);} }
-  @keyframes wrestleR { 0%,100%{transform:translateX(0) rotate(0);} 50%{transform:translateX(-2px) rotate(-2deg);} }
+  @keyframes wrestleL { 0%,100% { transform: translateX(0) rotate(0); } 50% { transform: translateX(2px) rotate(2deg); } }
+  @keyframes wrestleR { 0%,100% { transform: translateX(0) rotate(0); } 50% { transform: translateX(-2px) rotate(-2deg); } }
   .anim-car .wheel { transform-origin: center; transform-box: fill-box; animation: spin 1.2s linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
   .anim-car .car-body { animation: carBob 1.2s ease-in-out infinite; }
-  @keyframes carBob { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-1.5px);} }
+  @keyframes carBob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-1.5px); } }
   .anim-church .bell { transform-origin: center top; transform-box: fill-box; animation: ringBell 2.5s ease-in-out infinite; }
-  @keyframes ringBell { 0%,100%{transform:rotate(-8deg);} 50%{transform:rotate(8deg);} }
+  @keyframes ringBell { 0%,100% { transform: rotate(-8deg); } 50% { transform: rotate(8deg); } }
   .anim-steak .steam { animation: rise 3s ease-out infinite; transform-origin: center bottom; transform-box: fill-box; }
   .anim-steak .steam-2 { animation-delay: -1s; }
   .anim-steak .steam-3 { animation-delay: -2s; }
   @keyframes rise {
-    0% { transform: translateY(0) scale(1); opacity: 0.7; }
+    0% { transform: translateY(0) scale(1); opacity: 0.8; }
     100% { transform: translateY(-30px) scale(1.4); opacity: 0; }
   }
   .anim-flyrod .line { animation: cast 3s ease-in-out infinite; transform-origin: 25% 30%; transform-box: fill-box; }
@@ -481,28 +644,31 @@
     40% { transform: rotate(-8deg); }
     60% { transform: rotate(12deg); }
   }
-  .anim-pin .needle { transform-origin: 50% 80%; transform-box: fill-box; animation: tickTock 2s ease-in-out infinite; }
-  @keyframes tickTock { 0%,100%{transform:rotate(-15deg);} 50%{transform:rotate(15deg);} }
+  .anim-pin { animation: pinPulse 3s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+  @keyframes pinPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.04); } }
 
-  /* path along the map */
+  /* path along the map — marching neon */
   .map-path {
-    stroke: var(--sage);
-    stroke-width: 2;
-    stroke-dasharray: 6 8;
     fill: none;
+    stroke-width: 1.4;
+    stroke-dasharray: 6 10;
+    stroke-linecap: round;
     opacity: 0.5;
+    animation: dashMarch 6s linear infinite;
   }
-  #scott-view .map-path { stroke: var(--coral); opacity: 0.4; }
-  #carter-view .map-path { stroke: var(--teal); opacity: 0.4; }
+  @keyframes dashMarch { to { stroke-dashoffset: -160; } }
+  #scott-view  .map-path { stroke: var(--scott);  filter: drop-shadow(0 0 4px rgba(255,46,196,0.6)); }
+  #carter-view .map-path { stroke: var(--carter); filter: drop-shadow(0 0 4px rgba(0,240,255,0.6)); }
 
   /* responsive */
   @media (max-width: 880px) {
     .tile { width: 132px; }
     .map-canvas { padding: 20px; }
+    .tile-label .ttl { font-size: 14px; }
   }
   @media (max-width: 600px) {
     .tile { width: 110px; }
-    .tile-label { font-size: 11px; }
+    .tile-label .ttl { font-size: 12px; }
     .seventy { font-size: 200px; }
   }
 </style>
@@ -513,7 +679,7 @@
 <section id="welcome" class="view active" data-screen-label="01 Welcome">
   <div class="confetti" id="confetti"></div>
   <div class="welcome-inner">
-    <div class="eyebrow">A Virtual Memory Journal · May 7, 2026</div>
+    <div class="eyebrow"><span class="pulse"></span>A Virtual Memory Journal · May 7, 2026</div>
     <div class="seventy" aria-label="Seventy">
       <span class="seven">7</span><span class="zero">0</span>
     </div>
@@ -545,39 +711,36 @@
 <!-- ===================== SCOTT JOURNAL ===================== -->
 <section id="scott-view" class="view" data-screen-label="02 Scott's Journal">
   <header class="journal-header">
-    <button class="back-btn" data-back type="button">← Back to start</button>
+    <button class="back-btn" data-back type="button">← Back</button>
     <div class="journal-title">
       <span class="from">Memories from</span>
       <span class="name display">Scott</span>
     </div>
-    <div style="width: 120px;"></div>
+    <div style="width: 100px;"></div>
   </header>
   <div class="map-wrap">
     <div class="map-canvas" data-canvas="scott">
       <svg class="terrain-svg" viewBox="0 0 1400 1700" preserveAspectRatio="none">
-        <!-- soft topographic background -->
         <defs>
           <radialGradient id="terrain-scott" cx="50%" cy="40%" r="70%">
-            <stop offset="0%" stop-color="#FBE9E4" stop-opacity="0.5" />
-            <stop offset="100%" stop-color="#FAF7F2" stop-opacity="0" />
+            <stop offset="0%"   stop-color="#FF2EC4" stop-opacity="0.10" />
+            <stop offset="100%" stop-color="#FF2EC4" stop-opacity="0" />
           </radialGradient>
         </defs>
         <rect width="1400" height="1700" fill="url(#terrain-scott)" />
         <!-- topography rings -->
-        <g fill="none" stroke="#1A1F2E" stroke-opacity="0.05" stroke-width="1.2">
+        <g fill="none" stroke="#FFFFFF" stroke-opacity="0.04" stroke-width="1">
           <ellipse cx="700" cy="850" rx="620" ry="780" />
           <ellipse cx="700" cy="850" rx="500" ry="640" />
           <ellipse cx="700" cy="850" rx="380" ry="500" />
           <ellipse cx="700" cy="850" rx="260" ry="350" />
         </g>
-        <!-- meandering path -->
         <path class="map-path" d="" data-path="scott" />
       </svg>
       <div class="map-intro">
         <h2 class="display">A walk through the years <em>with Dad</em></h2>
-        <p>Click any memory to open it.</p>
+        <p>// click any memory to open</p>
       </div>
-      <!-- tiles injected here -->
     </div>
   </div>
 </section>
@@ -585,24 +748,24 @@
 <!-- ===================== CARTER JOURNAL ===================== -->
 <section id="carter-view" class="view" data-screen-label="03 Carter's Journal">
   <header class="journal-header">
-    <button class="back-btn" data-back type="button">← Back to start</button>
+    <button class="back-btn" data-back type="button">← Back</button>
     <div class="journal-title">
       <span class="from">Memories from</span>
       <span class="name display">Carter</span>
     </div>
-    <div style="width: 120px;"></div>
+    <div style="width: 100px;"></div>
   </header>
   <div class="map-wrap">
     <div class="map-canvas" data-canvas="carter">
       <svg class="terrain-svg" viewBox="0 0 1400 1700" preserveAspectRatio="none">
         <defs>
           <radialGradient id="terrain-carter" cx="50%" cy="40%" r="70%">
-            <stop offset="0%" stop-color="#DCEAEE" stop-opacity="0.55" />
-            <stop offset="100%" stop-color="#FAF7F2" stop-opacity="0" />
+            <stop offset="0%"   stop-color="#00F0FF" stop-opacity="0.10" />
+            <stop offset="100%" stop-color="#00F0FF" stop-opacity="0" />
           </radialGradient>
         </defs>
         <rect width="1400" height="1700" fill="url(#terrain-carter)" />
-        <g fill="none" stroke="#1A1F2E" stroke-opacity="0.05" stroke-width="1.2">
+        <g fill="none" stroke="#FFFFFF" stroke-opacity="0.04" stroke-width="1">
           <ellipse cx="700" cy="850" rx="620" ry="780" />
           <ellipse cx="700" cy="850" rx="500" ry="640" />
           <ellipse cx="700" cy="850" rx="380" ry="500" />
@@ -612,7 +775,7 @@
       </svg>
       <div class="map-intro">
         <h2 class="display">A walk through the years <em>with Dad</em></h2>
-        <p>Click any memory to open it.</p>
+        <p>// click any memory to open</p>
       </div>
     </div>
   </div>
