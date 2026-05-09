@@ -668,16 +668,120 @@
   #scott-view  .map-path { stroke: var(--scott);  filter: drop-shadow(0 0 4px rgba(255,46,196,0.6)); }
   #carter-view .map-path { stroke: var(--carter); filter: drop-shadow(0 0 4px rgba(0,240,255,0.6)); }
 
-  /* responsive */
+  /* ---------- RESPONSIVE ---------- */
+
+  /* Tablet: tighten the map canvas */
   @media (max-width: 880px) {
-    .tile { width: 132px; }
     .map-canvas { padding: 20px; }
+    .tile { width: 140px; }
     .tile-label .ttl { font-size: 14px; }
   }
-  @media (max-width: 600px) {
-    .tile { width: 110px; }
-    .tile-label .ttl { font-size: 12px; }
+
+  /* Phone: switch journals to a vertical list to prevent tile overlap.
+     The map metaphor is hidden; tiles become horizontal memory cards. */
+  @media (max-width: 720px) {
     .seventy { font-size: 200px; }
+    .welcome-cta { gap: 12px; }
+    .son-btn { min-width: 0; width: 100%; max-width: 320px; }
+
+    /* Hide map background (topo rings + path) — doesn't read as a list */
+    .terrain-svg { display: none; }
+
+    .map-wrap { padding: 12px 0 60px; min-height: auto; }
+    .map-canvas {
+      aspect-ratio: auto;
+      padding: 20px 16px 40px;
+      width: 100%;
+      max-width: 540px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .map-intro {
+      position: static;
+      transform: none;
+      text-align: center;
+      margin: 0 0 16px;
+      padding: 0 8px;
+    }
+    .map-intro h2 { font-size: 28px; line-height: 1.1; }
+    .map-intro p { margin-top: 10px; font-size: 10px; }
+
+    /* Tile becomes a flow-positioned horizontal card */
+    .tile {
+      position: static;
+      transform: none;
+      width: 100%;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 14px;
+      background: var(--bg-tile);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      text-align: left;
+      opacity: 0;
+      transition: border-color 0.25s, box-shadow 0.25s, transform 0.15s;
+    }
+    .tile:hover { transform: none; }
+    .tile:active { transform: scale(0.99); }
+    .view.active .tile { animation: tileSlideIn 0.5s ease forwards; }
+
+    /* Glow lives on the outer tile in mobile, not the inner art */
+    #scott-view  .tile:hover {
+      border-color: var(--scott);
+      box-shadow: 0 0 0 1px var(--scott), 0 0 18px rgba(255,46,196,0.25);
+    }
+    #carter-view .tile:hover {
+      border-color: var(--carter);
+      box-shadow: 0 0 0 1px var(--carter), 0 0 18px rgba(0,240,255,0.25);
+    }
+    #scott-view  .tile:hover .tile-art,
+    #carter-view .tile:hover .tile-art {
+      box-shadow: none;
+      border-color: var(--line);
+    }
+
+    .tile-art {
+      width: 68px;
+      height: 68px;
+      aspect-ratio: 1;
+      flex-shrink: 0;
+      border-radius: 10px;
+    }
+    .tile-art svg { width: 78%; height: 78%; }
+
+    .tile-label {
+      flex: 1;
+      margin-top: 0;
+      text-align: left;
+      min-width: 0;
+    }
+    .tile-label .num { margin-bottom: 4px; font-size: 9px; }
+    .tile-label .ttl { font-size: 15px; line-height: 1.25; }
+
+    /* Modal padding tightened on small screens */
+    .modal-body { padding: 22px 22px 26px; }
+    .modal-title { font-size: 28px; }
+  }
+
+  /* Small phone */
+  @media (max-width: 420px) {
+    .map-canvas { padding: 20px 14px 40px; }
+    .tile-art { width: 60px; height: 60px; }
+    .tile-label .ttl { font-size: 14px; }
+    .map-intro h2 { font-size: 24px; }
+    .seventy { font-size: clamp(140px, 50vw, 200px); }
+    .journal-header { padding: 12px 16px; }
+    .journal-title { font-size: 18px; }
+    .journal-title .from { display: none; }
+  }
+
+  @keyframes tileSlideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: none; }
   }
 </style>
 </head>
