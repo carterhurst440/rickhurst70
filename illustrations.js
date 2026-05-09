@@ -210,6 +210,65 @@ const ILLUS = {
       <g class="leaf" transform="translate(78 12)"><path d="M0 0 Q5 -4 8 1 Q5 6 0 5 Z" ${S(NEON.orange, 1.4)} /></g>
     </svg>`,
 
+  // Police car from behind with alternating light bar
+  police: () => `
+    <svg class="anim-police neon-magenta" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <!-- light bar housing -->
+      <rect x="22" y="32" width="56" height="9" rx="2" ${S(NEON.magenta)} />
+      <!-- left flash (magenta) -->
+      <g class="flash-l">
+        <rect x="24" y="34" width="12" height="5" rx="1" fill="${NEON.magenta}" />
+        <rect x="38" y="34" width="12" height="5" rx="1" fill="${NEON.magenta}" />
+      </g>
+      <!-- right flash (cyan) -->
+      <g class="flash-r">
+        <rect x="52" y="34" width="12" height="5" rx="1" fill="${NEON.cyan}" />
+        <rect x="66" y="34" width="12" height="5" rx="1" fill="${NEON.cyan}" />
+      </g>
+      <!-- rear window -->
+      <rect x="26" y="41" width="48" height="14" rx="2" ${S(NEON.magenta)} opacity="0.6" />
+      <!-- car body -->
+      <rect x="14" y="55" width="72" height="22" rx="3" ${S(NEON.magenta)} />
+      <!-- tail lights -->
+      <rect x="14" y="57" width="10" height="8" rx="1" ${S(NEON.magenta, 1.4)} opacity="0.7" />
+      <rect x="76" y="57" width="10" height="8" rx="1" ${S(NEON.magenta, 1.4)} opacity="0.7" />
+      <!-- wheels -->
+      <ellipse cx="28" cy="80" rx="10" ry="4" ${S(NEON.magenta, 1.4)} />
+      <ellipse cx="72" cy="80" rx="10" ry="4" ${S(NEON.magenta, 1.4)} />
+    </svg>`,
+
+  // Stick figure skier
+  ski: () => `
+    <svg class="anim-ski neon-cyan" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <line x1="4" y1="90" x2="96" y2="76" ${S(NEON.cyan, 1.2)} opacity="0.3" />
+      <line x1="68" y1="30" x2="82" y2="28" ${S(NEON.cyan, 1)} opacity="0.4" stroke-dasharray="3 2" />
+      <line x1="70" y1="42" x2="84" y2="40" ${S(NEON.cyan, 1)} opacity="0.4" stroke-dasharray="3 2" />
+      <line x1="66" y1="54" x2="80" y2="52" ${S(NEON.cyan, 1)} opacity="0.3" stroke-dasharray="3 2" />
+      <g class="skier">
+        <circle cx="46" cy="20" r="7" ${S(NEON.cyan)} />
+        <line x1="46" y1="27" x2="39" y2="52" ${S(NEON.cyan)} />
+        <line x1="43" y1="38" x2="58" y2="32" ${S(NEON.cyan)} />
+        <line x1="42" y1="38" x2="28" y2="45" ${S(NEON.cyan)} />
+        <line x1="28" y1="45" x2="24" y2="64" ${S(NEON.cyan, 1.2)} opacity="0.8" />
+        <line x1="39" y1="52" x2="30" y2="68" ${S(NEON.cyan)} />
+        <line x1="39" y1="52" x2="47" y2="68" ${S(NEON.cyan)} />
+        <line x1="14" y1="73" x2="44" y2="68" ${S(NEON.cyan, 2.2)} />
+        <line x1="33" y1="73" x2="63" y2="68" ${S(NEON.cyan, 2.2)} />
+      </g>
+    </svg>`,
+
+  // Necktie (Father's Day)
+  tie: () => `
+    <svg class="anim-tie neon-yellow" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <line x1="28" y1="16" x2="46" y2="22" ${S(NEON.yellow, 1.2)} opacity="0.5" />
+      <line x1="72" y1="16" x2="54" y2="22" ${S(NEON.yellow, 1.2)} opacity="0.5" />
+      <path d="M47 12 L53 12 L54 20 L46 20 Z" ${S(NEON.yellow)} opacity="0.5" />
+      <g class="tie-body">
+        <path d="M44 20 L56 20 L58 32 L42 32 Z" ${S(NEON.yellow)} />
+        <path d="M42 32 L34 68 L44 84 L50 90 L56 84 L66 68 L58 32 Z" ${S(NEON.yellow)} />
+      </g>
+    </svg>`,
+
   // Camera / generic placeholder
   camera: () => `
     <svg class="anim-pin neon-lime" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">

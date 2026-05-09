@@ -646,6 +646,14 @@
   }
   .anim-pin { animation: pinPulse 3s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
   @keyframes pinPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.04); } }
+  .anim-tie .tie-body { animation: tieSwing 3s ease-in-out infinite; transform-box: fill-box; transform-origin: center top; }
+  @keyframes tieSwing { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+  .anim-ski .skier { animation: skiGlide 2.4s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  @keyframes skiGlide { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+  .anim-police .flash-l { animation: flashL 0.7s ease-in-out infinite; }
+  .anim-police .flash-r { animation: flashR 0.7s ease-in-out infinite; }
+  @keyframes flashL { 0%, 45% { opacity: 1; } 55%, 100% { opacity: 0.08; } }
+  @keyframes flashR { 0%, 45% { opacity: 0.08; } 55%, 100% { opacity: 1; } }
 
   /* path along the map — marching neon */
   .map-path {
@@ -812,8 +820,8 @@
 </button>
 <audio id="bgm" loop preload="none"></audio>
 
-<script src="illustrations.js"></script>
-<script src="memories.js"></script>
-<script src="app.js"></script>
+<script src="illustrations.js?v=7"></script>
+<script src="memories.js?v=7"></script>
+<script src="app.js?v=7"></script>
 </body>
 </html>
