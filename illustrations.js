@@ -269,6 +269,63 @@ const ILLUS = {
       </g>
     </svg>`,
 
+  // Running — Robie Creek race
+  running: () => `
+    <svg class="anim-running neon-lime" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <line x1="10" y1="86" x2="90" y2="86" ${S(NEON.lime, 1.4)} stroke-dasharray="4 4" opacity="0.4" />
+      <line x1="14" y1="50" x2="28" y2="50" ${S(NEON.lime, 1.4)} opacity="0.4" />
+      <line x1="10" y1="60" x2="26" y2="60" ${S(NEON.lime, 1.4)} opacity="0.55" />
+      <line x1="14" y1="70" x2="28" y2="70" ${S(NEON.lime, 1.4)} opacity="0.4" />
+      <g class="runner">
+        <circle cx="58" cy="24" r="6" ${S(NEON.lime)} />
+        <line x1="58" y1="30" x2="50" y2="56" ${S(NEON.lime)} />
+        <line x1="54" y1="40" x2="42" y2="46" ${S(NEON.lime)} />
+        <line x1="56" y1="40" x2="68" y2="38" ${S(NEON.lime)} />
+        <line x1="50" y1="56" x2="40" y2="76" ${S(NEON.lime)} />
+        <line x1="50" y1="56" x2="64" y2="74" ${S(NEON.lime)} />
+        <line x1="64" y1="74" x2="72" y2="78" ${S(NEON.lime)} />
+        <line x1="40" y1="76" x2="32" y2="80" ${S(NEON.lime)} />
+      </g>
+    </svg>`,
+
+  // Mountain bike — Moab Beaver Ridge to Onion Creek
+  bike: () => `
+    <svg class="anim-bike neon-magenta" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 50 L18 30 L34 44 L50 26 L66 42 L84 32 L100 46" ${S(NEON.magenta, 1.4)} opacity="0.4" />
+      <circle cx="26" cy="74" r="11" ${S(NEON.magenta)} />
+      <circle cx="74" cy="74" r="11" ${S(NEON.magenta)} />
+      <line x1="22" y1="70" x2="30" y2="78" ${S(NEON.magenta, 1.2)} opacity="0.55" />
+      <line x1="70" y1="70" x2="78" y2="78" ${S(NEON.magenta, 1.2)} opacity="0.55" />
+      <line x1="26" y1="74" x2="48" y2="56" ${S(NEON.magenta)} />
+      <line x1="48" y1="56" x2="64" y2="74" ${S(NEON.magenta)} />
+      <line x1="40" y1="74" x2="48" y2="56" ${S(NEON.magenta)} />
+      <line x1="40" y1="74" x2="64" y2="74" ${S(NEON.magenta)} />
+      <line x1="48" y1="56" x2="44" y2="50" ${S(NEON.magenta)} />
+      <line x1="40" y1="50" x2="48" y2="50" ${S(NEON.magenta)} />
+      <line x1="64" y1="74" x2="74" y2="56" ${S(NEON.magenta)} />
+      <line x1="70" y1="56" x2="78" y2="56" ${S(NEON.magenta)} />
+    </svg>`,
+
+  // Home — Sundays at Grandma & Grandpa Hurst's
+  home: () => `
+    <svg class="anim-home neon-yellow" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <rect x="22" y="48" width="56" height="36" ${S(NEON.yellow)} />
+      <path d="M18 48 L50 22 L82 48" ${S(NEON.yellow)} />
+      <rect x="62" y="30" width="6" height="14" ${S(NEON.yellow)} />
+      <g>
+        <path class="smoke smoke-1" d="M62 26 q3 -4 0 -8 q-3 -4 0 -8" ${S(NEON.yellow, 1.4)} opacity="0.7" />
+        <path class="smoke smoke-2" d="M70 22 q3 -4 0 -8 q-3 -4 0 -8" ${S(NEON.yellow, 1.4)} opacity="0.7" />
+      </g>
+      <rect x="44" y="60" width="12" height="24" ${S(NEON.yellow)} />
+      <circle cx="53" cy="73" r="0.9" fill="${NEON.yellow}" />
+      <rect x="28" y="56" width="10" height="10" ${S(NEON.yellow, 1.4)} />
+      <line x1="33" y1="56" x2="33" y2="66" ${S(NEON.yellow, 1.2)} opacity="0.55" />
+      <line x1="28" y1="61" x2="38" y2="61" ${S(NEON.yellow, 1.2)} opacity="0.55" />
+      <rect x="62" y="56" width="10" height="10" ${S(NEON.yellow, 1.4)} />
+      <line x1="67" y1="56" x2="67" y2="66" ${S(NEON.yellow, 1.2)} opacity="0.55" />
+      <line x1="62" y1="61" x2="72" y2="61" ${S(NEON.yellow, 1.2)} opacity="0.55" />
+    </svg>`,
+
   // Camera / generic placeholder
   camera: () => `
     <svg class="anim-pin neon-lime" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">

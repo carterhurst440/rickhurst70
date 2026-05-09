@@ -26,27 +26,35 @@ const SCOTT_MEMORIES = [
     text: `Just the two of us, the open road, and a trunk full of dorm-room boxes.\n\n${PLACEHOLDER}` },
 ];
 
-// Carter's memories — same scenes by default; user will swap in his own.
 const CARTER_MEMORIES = [
-  { id: 'c-sawtooth', illus: 'mountain', title: 'A Memory in the Mountains', date: 'Add a date', x: 22, y: 18,
+  { id: 'c-sawtooth', illus: 'mountain', title: 'Fifty Miles in the Sawtooths', date: 'My first fifty-miler', x: 22, y: 18,
+    text: `The first fifty mile hike tested me in ways I wasn't fully prepared for, both physically and mentally. The thing I remember most is overnight preparing for bed and getting into the tent with you. I was right on the cusp of being old enough to go so I know everyone was worried about me, but I had all the support I needed.\n\nI protested sleeping on a pad, still you brought one for me to sleep on. I probably resisted brushing my teeth, washing my face, all the things a wiser and more seasoned hiker has learned to do, but still you helped me through it with patience. On the trail I'm sure I was distracted by friends and wild boy antics, but in the memories that still linger about those moments it's your presence that is most strongly felt.\n\nThank you for looking out for me, for trying to teach me when I didn't want to be taught, for putting in effort, and for letting me enjoy nature in the most raw and powerful way.` },
+
+  { id: 'c-park-city', illus: 'flyfish', title: 'A Word of Prayer in Park City', date: 'September 29, 2014', x: 62, y: 22,
+    text: `An excerpt from my journal — Sept 29, 2014:\n\nMy dad was in town this last few days. He had a work meeting in Park City and then came Thursday down to hang out with me and fish. He is obsessed with fishing right now but I feel like its good for him.\n\nBut as he was leaving he said something that had a profound impact on me. It was very simple but I was deeply moved. As he was leaving he asked to have a word of prayer. I said a prayer and then he hugged me and said "I love you son. You are a good man. You really are, and I know you try your best to be one. I'm proud of you, don't let the little frustrations of life get you down. It will all work out, just hang in there."\n\nJust hearing my dad say I was a good man. It was powerful. Because I really do try to be a good man, and I mess up a lot. But the validation of a father — that meant a lot. And I knew he was moved to say that, because I needed to hear that. God puts people around us that we need around us. Perhaps sometimes they need us around them.\n\nI want to express my gratitude for my father and for his goodness. I'm grateful I have a worthy father who has the spirit with him. Sometimes I feel like my dad is so stubborn and almost too righteous, but I know it comes from a place of him wanting to be the best he can be. And he is a great man.` },
+
+  { id: 'c-trivia', illus: 'boardgame', title: 'Trivial Pursuit', date: 'Sunday evenings, Hobble Creek', x: 84, y: 32,
+    text: `One of our favorite Sunday evening pastimes growing up in the Hobble Creek house. Scott and Dad vs. Mom and Carter usually — which maybe didn't make the most sense from a competitive perspective, but I never shied away from the challenge.\n\nWe enjoyed those moments of intellectual warfare, and I was always impressed by your depth of knowledge of so many subjects (Scott's too in fact). I think deep down I knew I couldn't compete on that level especially at that age, but you instilled in me the importance of knowledge and intellect. I aspired to be like you were in that game — able to call upon your past experience and regurgitate a random factoid.` },
+
+  { id: 'c-fhe', illus: 'church', title: 'Family Home Evening', date: 'Monday nights', x: 14, y: 38,
+    text: `This is something I only appreciate now that I have 3 kids of my own. How challenging it is to carve out sacred time on a consistent basis to learn and grow with each other, to step out of the busy-ness of the day or week and to think about godly things.\n\nYou always made sure we did this (and Mom as well). You shared in those moments so many precious bits of wisdom that stuck with me, but by far the most profound bit — making the time and space to be in those moments together.\n\nI try and fail to do things like this now that I'm a dad. I'll continue to try, but I have incredible respect now for the consistency and intention with which you brought our family together. THANK YOU.` },
+
+  { id: 'c-jam', illus: 'car', title: 'Helping Me Out of a Jam', date: '2 a.m., after a tournament', x: 50, y: 46,
+    text: `It's 2 a.m. in the middle of winter and I've just returned home from a wrestling tournament in Idaho Falls. We arrive at Centennial High School and get off the charter bus. Chance Hyer and I jump in my Suzuki Esteem and I start heading toward his house.\n\nThe past few days have been snowy and the road is frozen over in some places, although for my young eyes I'm not as attuned to the conditions as I should be. I make the final turn into his cul-de-sac but I've got too much speed and we hit a patch of ice. I'm headed right toward the hard curb. BANG.\n\nThe way the wheel hit the curb it snapped the axle and the car was out of commission. Luckily for Chance we had arrived at his house, unlucky for me my car wasn't going to get me home. We ran into Chance's house and I called you. 2 a.m. middle of the night you answer, I tell you with some shame that I'm going to need you to pick me up. You tell me to call the tow company to get the car to the shop at Fairly's. A few minutes later you're there to pick me up.\n\nI don't remember the conversation on the ride home to be honest. I'm sure there was some talk about being able to prevent these type of incidents in the future, but what is important looking back is that you were there, and that I always knew you would be there. There were no doubts in my mind that if I was in a jam and needed help, you would answer the call.` },
+
+  { id: 'c-fajitas', illus: 'steak', title: 'The Best Meal Ever?', date: 'After my mission, on the way to Provo', x: 80, y: 52,
+    text: `The best fajitas I've ever eaten in my life were at an Applebee's in Rexburg, Idaho — who would have thought.\n\nIt had been a long day. You and I drove all day in an old truck, I want to say with a trailer. We're going to help Scott and Natasha move into their new apartment in Rexburg because they had just gotten married. We spent the freezing cold night moving couches and boxes and after we had thoroughly exhausted ourselves we looked for any open eating establishment we could find.\n\nIt just so happened to be Applebee's. We both looked at the menu and almost simultaneously pointed to the fajitas — "those look pretty good right now." Those bad boys came out of the kitchen with all the usual fanfare, sizzles and splatters all the way down into our starving gullets. What a meal! What a great time to spend with each other.\n\nWe then stayed in a motel of some sort and continued our journey to Provo to drop me off at college for my first semester back from my mission.` },
+
+  { id: 'c-robie', illus: 'running', title: 'Running Robie', date: 'Add a date', x: 24, y: 60,
     text: `${PLACEHOLDER}` },
-  { id: 'c-wrestling', illus: 'wrestle', title: 'A Wrestling Memory', date: 'Add a date', x: 62, y: 22,
+
+  { id: 'c-wrestling', illus: 'wrestle', title: 'Wrestling', date: 'Add a date', x: 56, y: 68,
     text: `${PLACEHOLDER}` },
-  { id: 'c-steak', illus: 'steak', title: 'A Dinner Memory', date: 'Add a date', x: 84, y: 32,
+
+  { id: 'c-grandparents', illus: 'home', title: "Sundays at Grandma & Grandpa Hurst's", date: 'Sunday afternoons', x: 22, y: 80,
     text: `${PLACEHOLDER}` },
-  { id: 'c-bsu', illus: 'football', title: 'A BSU Game Memory', date: 'Add a date', x: 14, y: 38,
-    text: `${PLACEHOLDER}` },
-  { id: 'c-trivia', illus: 'boardgame', title: 'A Game Night Memory', date: 'Add a date', x: 50, y: 46,
-    text: `${PLACEHOLDER}` },
-  { id: 'c-drum', illus: 'drum', title: 'A Drum Memory', date: 'Add a date', x: 80, y: 52,
-    text: `${PLACEHOLDER}` },
-  { id: 'c-flyfish', illus: 'flyfish', title: 'A Fishing Memory', date: 'Add a date', x: 24, y: 60,
-    text: `${PLACEHOLDER}` },
-  { id: 'c-driving', illus: 'car', title: 'A Driving Memory', date: 'Add a date', x: 56, y: 68,
-    text: `${PLACEHOLDER}` },
-  { id: 'c-roadtrip', illus: 'roadtrip', title: 'A Road Trip Memory', date: 'Add a date', x: 22, y: 80,
-    text: `${PLACEHOLDER}` },
-  { id: 'c-church', illus: 'church', title: 'A Church Memory', date: 'Add a date', x: 70, y: 84,
+
+  { id: 'c-moab', illus: 'bike', title: 'Moab — Beaver Ridge to Onion Creek', date: 'Add a date', x: 70, y: 84,
     text: `${PLACEHOLDER}` },
 ];
 

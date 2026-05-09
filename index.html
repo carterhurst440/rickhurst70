@@ -654,6 +654,12 @@
   .anim-police .flash-r { animation: flashR 0.7s ease-in-out infinite; }
   @keyframes flashL { 0%, 45% { opacity: 1; } 55%, 100% { opacity: 0.08; } }
   @keyframes flashR { 0%, 45% { opacity: 0.08; } 55%, 100% { opacity: 1; } }
+  .anim-running .runner { animation: runStride 0.55s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: center; }
+  @keyframes runStride { from { transform: translateY(0); } to { transform: translateY(-2px); } }
+  .anim-bike { animation: bikeBob 1.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+  @keyframes bikeBob { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-2px) rotate(-1deg); } }
+  .anim-home .smoke { animation: rise 3s ease-out infinite; transform-box: fill-box; transform-origin: center bottom; }
+  .anim-home .smoke-2 { animation-delay: -1.5s; }
 
   /* path along the map — marching neon */
   .map-path {
