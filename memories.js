@@ -20,8 +20,8 @@ const SCOTT_MEMORIES = [
     text: `He knew every answer. Every. Single. One.\n\n${PLACEHOLDER}` },
   { id: 'drum', illus: 'drum', title: 'Watching Dad Drum', date: 'Anytime he sat down at the kit', x: 76, y: 74,
     text: `There was a different version of Dad behind the kit. Lighter. All rhythm.\n\n${PLACEHOLDER}` },
-  { id: 'flyfish', illus: 'flyfish', title: 'Learning to Fly Fish', date: 'Idaho & Utah rivers', x: 24, y: 82,
-    text: `Stand in the river. Strip the line. He'd whisper corrections so the fish wouldn't hear.\n\n${PLACEHOLDER}` },
+  { id: 'flyfish', illus: 'flyfish', title: 'Warm Lake', date: 'Summer 2025', x: 24, y: 82,
+    text: `As told by Chandler. \n\nGrandpa took us to a cabin at Warm Lake. It was a small cabin. Two bedrooms and a bathroom and a kitchen, and no TV. That was okay though.\n\nOn the way there we saw deer out the window.\n\nThe best thing we did was fishing. I caught the first fish every single day! We caught a lot of them, and then we ate them. Grandpa taught me how to catch fish. When I caught one I got to hold it and it was moving all around in my hands.\n\nMy favorite meal on the whole trip was pancakes at a restaurant.\n\nAt night we read books in our beds to settle down before sleeping.\n\nIf I could go back, I would want to get a Twinkie from the store.\n\nMy favorite thing about Grandpa is fishing.` },
   { id: 'mission', illus: 'roadtrip', title: 'The Drive to College', date: 'After my mission', x: 68, y: 88,
     text: `Just the two of us, the open road, and a trunk full of dorm-room boxes.\n\n${PLACEHOLDER}` },
 ];
