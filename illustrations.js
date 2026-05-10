@@ -17,6 +17,14 @@ const S = (color, w = 2) =>
 
 const ILLUS = {
 
+  // Mickey Mouse silhouette — Disneyland
+  mickey: () => `
+    <svg class="anim-sun neon-yellow" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="29" cy="30" r="14" ${S(NEON.yellow)} />
+      <circle cx="71" cy="30" r="14" ${S(NEON.yellow)} />
+      <circle cx="50" cy="63" r="22" ${S(NEON.yellow)} />
+    </svg>`,
+
   // 50-mile Sawtooth hike
   mountain: () => `
     <svg class="anim-mountain neon-cyan" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -324,6 +332,57 @@ const ILLUS = {
       <rect x="62" y="56" width="10" height="10" ${S(NEON.yellow, 1.4)} />
       <line x1="67" y1="56" x2="67" y2="66" ${S(NEON.yellow, 1.2)} opacity="0.55" />
       <line x1="62" y1="61" x2="72" y2="61" ${S(NEON.yellow, 1.2)} opacity="0.55" />
+    </svg>`,
+
+  // Jersey
+  baseball: () => `
+    <svg class="anim-jersey neon-orange" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M37 15 L27 20 L15 27 L20 37 L30 32 L30 87 L70 87 L70 32 L80 37 L85 27 L73 20 L63 15 C60 11 57 9 50 9 C43 9 40 11 37 15 Z" ${S(NEON.orange)} />
+      <path d="M37 15 L50 27 L63 15" ${S(NEON.orange)} />
+      <line x1="50" y1="27" x2="50" y2="87" ${S(NEON.orange, 0.8)} />
+      <circle cx="50" cy="35" r="1" ${S(NEON.orange, 0.8)} />
+      <circle cx="50" cy="45" r="1" ${S(NEON.orange, 0.8)} />
+      <circle cx="50" cy="55" r="1" ${S(NEON.orange, 0.8)} />
+      <circle cx="50" cy="65" r="1" ${S(NEON.orange, 0.8)} />
+      <circle cx="50" cy="75" r="1" ${S(NEON.orange, 0.8)} />
+    </svg>`,
+
+  // Utah arch — Delicate Arch silhouette
+  arch: () => `
+    <svg class="anim-mountain neon-orange" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <line x1="4" y1="86" x2="96" y2="86" ${S(NEON.orange, 1.4)} opacity="0.4" />
+      <path d="M4 86 L16 76 L24 82 L38 70" ${S(NEON.orange, 1.2)} opacity="0.35" />
+      <circle cx="74" cy="18" r="1.2" fill="${NEON.orange}" opacity="0.7" />
+      <circle cx="86" cy="30" r="1" fill="${NEON.orange}" opacity="0.6" />
+      <circle cx="82" cy="10" r="1.4" fill="${NEON.orange}" opacity="0.8" />
+      <path d="M10 86 C14 64 24 44 40 32 C44 22 56 22 62 32 C76 44 80 64 80 86" ${S(NEON.orange, 1.8)} />
+      <path d="M28 86 C30 68 34 52 42 44 C45 36 55 36 60 44 C66 52 68 68 68 86" ${S(NEON.orange, 1.8)} />
+    </svg>`,
+
+  // Sun with beams — Sun Valley
+  sun: () => `
+    <svg class="anim-sun neon-yellow" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="16" ${S(NEON.yellow)} />
+      <line x1="50" y1="30" x2="50" y2="18" ${S(NEON.yellow, 1.6)} />
+      <line x1="50" y1="70" x2="50" y2="82" ${S(NEON.yellow, 1.6)} />
+      <line x1="30" y1="50" x2="18" y2="50" ${S(NEON.yellow, 1.6)} />
+      <line x1="70" y1="50" x2="82" y2="50" ${S(NEON.yellow, 1.6)} />
+      <line x1="36" y1="36" x2="28" y2="28" ${S(NEON.yellow, 1.6)} />
+      <line x1="64" y1="36" x2="72" y2="28" ${S(NEON.yellow, 1.6)} />
+      <line x1="36" y1="64" x2="28" y2="72" ${S(NEON.yellow, 1.6)} />
+      <line x1="64" y1="64" x2="72" y2="72" ${S(NEON.yellow, 1.6)} />
+    </svg>`,
+
+  // Controller
+  controller: () => `
+    <svg class="anim-controller neon-cyan" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <path d="M30 37 C22 37 12 40 9 45 C5 51 7 62 14 67 C19 71 26 70 31 65 C34 62 36 59 40 57 L60 57 C64 59 66 62 69 65 C74 70 81 71 86 67 C93 62 95 51 91 45 C88 40 78 37 70 37 C66 35 62 31 59 30 L41 30 C38 31 34 35 30 37 Z" ${S(NEON.cyan)} />
+      <rect x="21" y="44" width="13" height="4" rx="1" ${S(NEON.cyan, 0.8)} />
+      <rect x="25" y="39" width="4" height="13" rx="1" ${S(NEON.cyan, 0.8)} />
+      <circle cx="66" cy="42" r="2.5" ${S(NEON.cyan, 0.8)} />
+      <circle cx="72" cy="46" r="2.5" ${S(NEON.cyan, 0.8)} />
+      <circle cx="66" cy="50" r="2.5" ${S(NEON.cyan, 0.8)} />
+      <circle cx="60" cy="46" r="2.5" ${S(NEON.cyan, 0.8)} />
     </svg>`,
 
   // Camera / generic placeholder
