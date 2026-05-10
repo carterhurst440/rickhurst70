@@ -136,62 +136,30 @@
     });
   });
 
-  // ---------- Music toggle (silent placeholder; user can drop file in) ----------
+  // ---------- Music toggle ----------
+  // Drop your MP3 at assets/walking-man.mp3 to activate background music.
+  // The music button persists across all views (welcome, scott, carter).
   const musicBtn = document.getElementById('music');
   const musicLabel = document.getElementById('music-label');
   const audio = document.getElementById('bgm');
-  // Soft generated piano-ish loop using Web Audio API as a default ambient bed.
-  let audioCtx = null;
-  let masterGain = null;
+  audio.src = 'assets/walking-man.mp3';
+  audio.volume = 0.55;
   let playing = false;
-  let scheduler = null;
-
-  // Pentatonic notes (C major pentatonic) — feels warm and birthday-ish
-  const NOTES = [261.63, 293.66, 329.63, 392.00, 440.00, 523.25, 587.33];
-
-  function playNote(freq, when, dur = 1.2, vol = 0.08) {
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-    osc.type = 'sine';
-    osc.frequency.value = freq;
-    gain.gain.setValueAtTime(0, when);
-    gain.gain.linearRampToValueAtTime(vol, when + 0.04);
-    gain.gain.exponentialRampToValueAtTime(0.0001, when + dur);
-    osc.connect(gain).connect(masterGain);
-    osc.start(when);
-    osc.stop(when + dur + 0.1);
-  }
 
   function startMusic() {
-    if (!audioCtx) {
-      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      masterGain = audioCtx.createGain();
-      masterGain.gain.value = 0.5;
-      masterGain.connect(audioCtx.destination);
-    }
-    if (audioCtx.state === 'suspended') audioCtx.resume();
-    let t = audioCtx.currentTime + 0.1;
-    function tick() {
-      const now = audioCtx.currentTime;
-      while (t < now + 1.5) {
-        // melody note
-        const n = NOTES[Math.floor(Math.random() * NOTES.length)];
-        playNote(n, t, 1.4 + Math.random() * 0.6, 0.06);
-        // occasional bass
-        if (Math.random() < 0.4) playNote(NOTES[0] / 2, t, 2.0, 0.04);
-        t += 0.6 + Math.random() * 0.4;
-      }
-      scheduler = setTimeout(tick, 300);
-    }
-    tick();
-    playing = true;
-    musicBtn.classList.add('playing');
-    musicLabel.textContent = 'Pause music';
+    audio.play().then(() => {
+      playing = true;
+      musicBtn.classList.add('playing');
+      musicLabel.textContent = 'Pause music';
+    }).catch((err) => {
+      console.warn('Background music failed to play:', err);
+      musicLabel.textContent = 'Music unavailable';
+      setTimeout(() => { musicLabel.textContent = 'Play music'; }, 2000);
+    });
   }
 
   function stopMusic() {
-    if (scheduler) clearTimeout(scheduler);
-    if (audioCtx) audioCtx.suspend();
+    audio.pause();
     playing = false;
     musicBtn.classList.remove('playing');
     musicLabel.textContent = 'Play music';
