@@ -136,39 +136,6 @@
     });
   });
 
-  // ---------- Music toggle ----------
-  // Drop your MP3 at assets/walking-man.mp3 to activate background music.
-  // The music button persists across all views (welcome, scott, carter).
-  const musicBtn = document.getElementById('music');
-  const musicLabel = document.getElementById('music-label');
-  const audio = document.getElementById('bgm');
-  audio.src = 'assets/walking-man.mp3';
-  audio.volume = 0.55;
-  let playing = false;
-
-  function startMusic() {
-    audio.play().then(() => {
-      playing = true;
-      musicBtn.classList.add('playing');
-      musicLabel.textContent = 'Pause music';
-    }).catch((err) => {
-      console.warn('Background music failed to play:', err);
-      musicLabel.textContent = 'Music unavailable';
-      setTimeout(() => { musicLabel.textContent = 'Play music'; }, 2000);
-    });
-  }
-
-  function stopMusic() {
-    audio.pause();
-    playing = false;
-    musicBtn.classList.remove('playing');
-    musicLabel.textContent = 'Play music';
-  }
-
-  musicBtn.addEventListener('click', () => {
-    if (playing) stopMusic(); else startMusic();
-  });
-
   // ---------- Confetti ----------
   const confetti = document.getElementById('confetti');
   if (confetti) {
